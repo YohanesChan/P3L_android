@@ -92,7 +92,8 @@ public class LoginFragment extends Fragment {
                                 login_cred = sp.getString("login_cred", null);
 
                                 if (response.body().getResult().getRole_pegawai().equals("Owner")) {
-                                    Log.e("login isSuccessfull", login_cred);
+                                    Log.e("Login Berhasil", login_cred);
+                                    Toast.makeText(getContext(), "Login Berhasil", Toast.LENGTH_SHORT).show();
                                     progressDialog.dismiss();
                                     //intent to another activity
                                     Intent i = new Intent(getActivity(), OwnerActivity.class);
@@ -104,6 +105,8 @@ public class LoginFragment extends Fragment {
                                 }
                             }else {
                                 Log.e("onResponse", response.message());
+                                Toast.makeText(getContext(), "Login Gagal", Toast.LENGTH_SHORT).show();
+                                Log.e("Login Gagal", login_cred);
                                 progressDialog.dismiss();
                             }
                         }

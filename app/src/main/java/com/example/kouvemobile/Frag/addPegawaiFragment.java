@@ -101,25 +101,33 @@ public class addPegawaiFragment extends DialogFragment {
         v.findViewById(R.id.addpgw_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+                if (name_etxt.getText().toString().isEmpty() || mSpinner.getSelectedItem().toString().isEmpty() || alamat_etxt.getText().toString().isEmpty() || mBday.getText().toString().isEmpty() ||
+                        telp_etxt.getText().toString().isEmpty() || username_etxt.getText().toString().isEmpty() || password_etxt.getText().toString().isEmpty())
+                {
+                    Toast.makeText(getContext(), "Field harus terisi semua", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
-                Call<showPegawai> call = apiInterface.regisPegawai(name_etxt.getText().toString(),
-                        mSpinner.getSelectedItem().toString(), alamat_etxt.getText().toString(), mBday.getText().toString(),
-                        telp_etxt.getText().toString(), username_etxt.getText().toString(), password_etxt.getText().toString(),mnama,mnama);
-                call.enqueue(new Callback<showPegawai>() {
-                    @Override
-                    public void onResponse(Call<showPegawai> call, Response<showPegawai> response) {
-                        Toast.makeText(getContext(), "Suplier Ditambah", Toast.LENGTH_SHORT).show();
-                        ((PengPgwActivity)getActivity()).onFinishDialog();
-                        dismiss();
-                    }
+                    Call<showPegawai> call = apiInterface.regisPegawai(name_etxt.getText().toString(),
+                            mSpinner.getSelectedItem().toString(), alamat_etxt.getText().toString(), mBday.getText().toString(),
+                            telp_etxt.getText().toString(), username_etxt.getText().toString(), password_etxt.getText().toString(), mnama, mnama);
+                    call.enqueue(new Callback<showPegawai>() {
+                        @Override
+                        public void onResponse(Call<showPegawai> call, Response<showPegawai> response) {
+                            Toast.makeText(getContext(), "Suplier Ditambah", Toast.LENGTH_SHORT).show();
+                            ((PengPgwActivity) getActivity()).onFinishDialog();
+                            dismiss();
+                        }
 
-                    @Override
-                    public void onFailure(Call<showPegawai> call, Throwable t) {
-
-                        dismiss();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<showPegawai> call, Throwable t) {
+                            Toast.makeText(getContext(), "Suplier gagal Ditambah", Toast.LENGTH_SHORT).show();
+                            dismiss();
+                        }
+                    });
+                }
             }
         });
 //-----------------------------------------------------------------------------------sini

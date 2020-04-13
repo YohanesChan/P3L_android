@@ -101,24 +101,31 @@ public class addLayananFragment extends DialogFragment {
         v.findViewById(R.id.addlyn_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+                if (name_etxt.getText().toString().isEmpty() || harga_etxt.getText().toString().isEmpty() ||
+                    mSpinner.getSelectedItem().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Field harus terisi semua", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
-                Call<showLayanan> call = apiInterface.regisLayanan(name_etxt.getText().toString() + " - " + ukuranLy,
-                        Integer.parseInt(harga_etxt.getText().toString()),
-                        selected,mnama,mnama,mid);
-                call.enqueue(new Callback<showLayanan>() {
-                    @Override
-                    public void onResponse(Call<showLayanan> call, Response<showLayanan> response) {
-                        Toast.makeText(getContext(), "Layanan Ditambah", Toast.LENGTH_SHORT).show();
-                        ((PengLynActivity)getActivity()).onFinishDialog();
-                        dismiss();
-                    }
+                    Call<showLayanan> call = apiInterface.regisLayanan(name_etxt.getText().toString() + " - " + ukuranLy,
+                            Integer.parseInt(harga_etxt.getText().toString()),
+                            selected, mnama, mnama, mid);
+                    call.enqueue(new Callback<showLayanan>() {
+                        @Override
+                        public void onResponse(Call<showLayanan> call, Response<showLayanan> response) {
+                            Toast.makeText(getContext(), "Layanan Ditambah", Toast.LENGTH_SHORT).show();
+                            ((PengLynActivity) getActivity()).onFinishDialog();
+                            dismiss();
+                        }
 
-                    @Override
-                    public void onFailure(Call<showLayanan> call, Throwable t) {
-                        dismiss();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<showLayanan> call, Throwable t) {
+                            Toast.makeText(getContext(), "Layanan gagal Ditambah", Toast.LENGTH_SHORT).show();
+                            dismiss();
+                        }
+                    });
+                }
             }
         });
 //-----------------------------------------------------------------------------------sini

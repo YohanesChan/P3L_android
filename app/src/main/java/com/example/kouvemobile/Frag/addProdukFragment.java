@@ -14,6 +14,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.kouvemobile.API.ApiClient;
 import com.example.kouvemobile.API.ApiInterface;
+import com.example.kouvemobile.Model.Produk;
 import com.example.kouvemobile.PengPdkActivity;
 import com.example.kouvemobile.R;
 import com.example.kouvemobile.RecyclerView.DataProdukAdapter;
@@ -48,27 +49,34 @@ public class addProdukFragment extends DialogFragment {
         v.findViewById(R.id.addpdk_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+                if (name_etxt.getText().toString().isEmpty() || harga_etxt.getText().toString().isEmpty()||
+                        stok_etxt.getText().toString().isEmpty() || mstok_etxt.getText().toString().isEmpty())
+                {
+                    Toast.makeText(getContext(), "Field harus terisi semua", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
-                Call<showProduk> call = apiInterface.regisProduk(name_etxt.getText().toString(),
-                        Integer.parseInt(harga_etxt.getText().toString()),
-                        Integer.parseInt(stok_etxt.getText().toString()),
-                        Integer.parseInt(mstok_etxt.getText().toString()),
-                        mnama,mnama,mid);
-                call.enqueue(new Callback<showProduk>() {
-                    @Override
-                    public void onResponse(Call<showProduk> call, Response<showProduk> response) {
-                        Toast.makeText(getContext(), "Produk Ditambah", Toast.LENGTH_SHORT).show();
-                        ((PengPdkActivity)getActivity()).onFinishDialog();
-                        dismiss();
-                    }
+                    Call<showProduk> call = apiInterface.regisProduk(name_etxt.getText().toString(),
+                            Integer.parseInt(harga_etxt.getText().toString()),
+                            Integer.parseInt(stok_etxt.getText().toString()),
+                            Integer.parseInt(mstok_etxt.getText().toString()),
+                            mnama, mnama, mid);
+                    call.enqueue(new Callback<showProduk>() {
+                        @Override
+                        public void onResponse(Call<showProduk> call, Response<showProduk> response) {
+                            Toast.makeText(getContext(), "Produk Ditambah", Toast.LENGTH_SHORT).show();
+                            ((PengPdkActivity) getActivity()).onFinishDialog();
+                            dismiss();
+                        }
 
-                    @Override
-                    public void onFailure(Call<showProduk> call, Throwable t) {
-
-                        dismiss();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<showProduk> call, Throwable t) {
+                            Toast.makeText(getContext(), "Produk gagal Ditambah", Toast.LENGTH_SHORT).show();
+                            dismiss();
+                        }
+                    });
+                }
             }
         });
 //-----------------------------------------------------------------------------------sini

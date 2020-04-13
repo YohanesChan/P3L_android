@@ -43,23 +43,28 @@ public class addJenisFragment extends DialogFragment {
         v.findViewById(R.id.addjns_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+                if (name_etxt.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Field harus terisi semua", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
-                Call<showJenis> call = apiInterface.regisJenis(name_etxt.getText().toString(), mnama, mnama, mid);
-                call.enqueue(new Callback<showJenis>() {
-                    @Override
-                    public void onResponse(Call<showJenis> call, Response<showJenis> response) {
-                        Toast.makeText(getContext(), "Jenis Ditambah", Toast.LENGTH_SHORT).show();
-                        ((PengJnsActivity)getActivity()).onFinishDialog();
-                        dismiss();
-                    }
+                    Call<showJenis> call = apiInterface.regisJenis(name_etxt.getText().toString(), mnama, mnama, mid);
+                    call.enqueue(new Callback<showJenis>() {
+                        @Override
+                        public void onResponse(Call<showJenis> call, Response<showJenis> response) {
+                            Toast.makeText(getContext(), "Jenis Ditambah", Toast.LENGTH_SHORT).show();
+                            ((PengJnsActivity) getActivity()).onFinishDialog();
+                            dismiss();
+                        }
 
-                    @Override
-                    public void onFailure(Call<showJenis> call, Throwable t) {
-
-                        dismiss();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<showJenis> call, Throwable t) {
+                            Toast.makeText(getContext(), "Jenis Gagal Ditambah", Toast.LENGTH_SHORT).show();
+                            dismiss();
+                        }
+                    });
+                }
             }
         });
 //-----------------------------------------------------------------------------------sini

@@ -45,24 +45,28 @@ public class addUkuranFragment  extends DialogFragment {
         v.findViewById(R.id.adduk_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+                if (name_etxt.getText().toString().isEmpty()){
+                    Toast.makeText(getContext(), "Field harus terisi semua", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
-                Call<showUkuran> call = apiInterface.regisUkuran(name_etxt.getText().toString(), mnama, mnama, mid);
-                call.enqueue(new Callback<showUkuran>() {
-                    @Override
-                    public void onResponse(Call<showUkuran> call, Response<showUkuran> response) {
-                        Toast.makeText(getContext(), "Ukuran Ditambah", Toast.LENGTH_SHORT).show();
-                        ((PengUkActivity)getActivity()).onFinishDialog();
-                        dismiss();
-//                        Log.e("data mashookk", response.body().getStatus());
-                    }
+                    Call<showUkuran> call = apiInterface.regisUkuran(name_etxt.getText().toString(), mnama, mnama, mid);
+                    call.enqueue(new Callback<showUkuran>() {
+                        @Override
+                        public void onResponse(Call<showUkuran> call, Response<showUkuran> response) {
+                            Toast.makeText(getContext(), "Ukuran Ditambah", Toast.LENGTH_SHORT).show();
+                            ((PengUkActivity) getActivity()).onFinishDialog();
+                            dismiss();
+                        }
 
-                    @Override
-                    public void onFailure(Call<showUkuran> call, Throwable t) {
-
-                        dismiss();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<showUkuran> call, Throwable t) {
+                            Toast.makeText(getContext(), "Ukuran gagal Ditambah", Toast.LENGTH_SHORT).show();
+                            dismiss();
+                        }
+                    });
+                }
             }
         });
 //-----------------------------------------------------------------------------------sini

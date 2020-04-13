@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">KouveMobile</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="role">
+        <item>Owner</item>
+        <item>Customer Service</item>
+        <item>Kasir</item>
+    </string-array>
+</resources>

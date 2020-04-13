@@ -114,14 +114,20 @@ public class addLayananFragment extends DialogFragment {
                     call.enqueue(new Callback<showLayanan>() {
                         @Override
                         public void onResponse(Call<showLayanan> call, Response<showLayanan> response) {
-                            Toast.makeText(getContext(), "Layanan Ditambah", Toast.LENGTH_SHORT).show();
+                            if(response.isSuccessful())
+                            {
+                                Toast.makeText(getContext(), "Layanan Ditambah", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                Toast.makeText(getContext(), "Layanan gagal Ditambah", Toast.LENGTH_SHORT).show();
+                            }
                             ((PengLynActivity) getActivity()).onFinishDialog();
                             dismiss();
                         }
 
                         @Override
                         public void onFailure(Call<showLayanan> call, Throwable t) {
-                            Toast.makeText(getContext(), "Layanan gagal Ditambah", Toast.LENGTH_SHORT).show();
                             dismiss();
                         }
                     });

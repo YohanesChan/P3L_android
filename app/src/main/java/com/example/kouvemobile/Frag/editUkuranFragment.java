@@ -76,7 +76,14 @@ public class editUkuranFragment extends DialogFragment {
                 call.enqueue(new Callback<showUkuran>() {
                     @Override
                     public void onResponse(Call<showUkuran> call, Response<showUkuran> response) {
-                        Toast.makeText(getContext(), "Ukuran Dihapus", Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful())
+                        {
+                            Toast.makeText(getContext(), "Ukuran Dihapus", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(getContext(), "Ukuran gagal Dihapus", Toast.LENGTH_SHORT).show();
+                        }
                         ((PengUkActivity)getActivity()).onFinishDialog();
                         dismiss();
 
@@ -101,7 +108,12 @@ public class editUkuranFragment extends DialogFragment {
                 call.enqueue(new Callback<showUkuran>() {
                     @Override
                     public void onResponse(Call<showUkuran> call, Response<showUkuran> response) {
-                        Toast.makeText(getContext(), "Ukuran Diperbaharui", Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful()){
+                            Toast.makeText(getContext(), "Ukuran Diperbaharui", Toast.LENGTH_SHORT).show();
+                        }else
+                        {
+                            Toast.makeText(getContext(), "Ukuran gagal Diperbaharui", Toast.LENGTH_SHORT).show();
+                        }
                         dismiss();
                     }
 

@@ -62,7 +62,6 @@ public class PengPgwActivity extends AppCompatActivity implements View.OnClickLi
         call.enqueue(new Callback<showPegawai>() {
             @Override
             public void onResponse(Call<showPegawai> call, Response<showPegawai> response) {
-//                list.addAll(DataPegawai.getListData());
                 list.addAll(response.body().getResult());
                 mDataPegawaiAdapter.notifyDataSetChanged();
 
@@ -87,17 +86,17 @@ public class PengPgwActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                filter(s.toString());
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                filter(s.toString());
+
             }
         });
         Button btnAddPegawai = findViewById(R.id.createpgw_btn);
         btnAddPegawai.setOnClickListener(this);
-
+        onFinishDialog();
     }
 
     @Override
@@ -124,9 +123,9 @@ public class PengPgwActivity extends AppCompatActivity implements View.OnClickLi
         call.enqueue(new Callback<showPegawai>() {
             @Override
             public void onResponse(Call<showPegawai> call, Response<showPegawai> response) {
-
+                list = response.body().getResult();
                 mDataPegawaiAdapter.notifyDataSetChanged();
-                mDataPegawaiAdapter = new DataPegawaiAdapter(response.body().getResult(), PengPgwActivity.this);
+                mDataPegawaiAdapter = new DataPegawaiAdapter(list, PengPgwActivity.this);
                 rvPegawai.setAdapter(mDataPegawaiAdapter);
 
             }

@@ -67,14 +67,21 @@ public class addSupplierFragment extends DialogFragment {
                     call.enqueue(new Callback<showSupplier>() {
                         @Override
                         public void onResponse(Call<showSupplier> call, Response<showSupplier> response) {
-                            Toast.makeText(getContext(), "Suplier Ditambah", Toast.LENGTH_SHORT).show();
+                            if(response.isSuccessful())
+                            {
+                                Toast.makeText(getContext(), "Suplier Ditambah", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                Toast.makeText(getContext(), "Suplier gagal Ditambah", Toast.LENGTH_SHORT).show();
+                            }
                             ((PengSupActivity) getActivity()).onFinishDialog();
                             dismiss();
                         }
 
                         @Override
                         public void onFailure(Call<showSupplier> call, Throwable t) {
-                            Toast.makeText(getContext(), "Suplier gagal Ditambah", Toast.LENGTH_SHORT).show();
+
                             dismiss();
                         }
                     });

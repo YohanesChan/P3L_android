@@ -74,7 +74,14 @@ public class editJenisFragment extends DialogFragment {
                 call.enqueue(new Callback<showJenis>() {
                     @Override
                     public void onResponse(Call<showJenis> call, Response<showJenis> response) {
-                        Toast.makeText(getContext(), "Jenis Dihapus", Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful())
+                        {
+                            Toast.makeText(getContext(), "Jenis Dihapus", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(getContext(), "Jenis gagal Dihapus", Toast.LENGTH_SHORT).show();
+                        }
+
                         ((PengJnsActivity)getActivity()).onFinishDialog();
                         dismiss();
                     }
@@ -98,7 +105,15 @@ public class editJenisFragment extends DialogFragment {
                 call.enqueue(new Callback<showJenis>() {
                     @Override
                     public void onResponse(Call<showJenis> call, Response<showJenis> response) {
-                        Toast.makeText(getContext(), "Jenis Diperbaharui", Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful())
+                        {
+
+                            Toast.makeText(getContext(), "Jenis Diperbaharui", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(getContext(), "Jenis gagal Diperbaharui", Toast.LENGTH_SHORT).show();
+                        }
                         dismiss();
                     }
 

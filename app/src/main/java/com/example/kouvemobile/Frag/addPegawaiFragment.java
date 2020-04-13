@@ -116,14 +116,19 @@ public class addPegawaiFragment extends DialogFragment {
                     call.enqueue(new Callback<showPegawai>() {
                         @Override
                         public void onResponse(Call<showPegawai> call, Response<showPegawai> response) {
-                            Toast.makeText(getContext(), "Suplier Ditambah", Toast.LENGTH_SHORT).show();
+                            if(response.isSuccessful())
+                            {
+                                Toast.makeText(getContext(), "Suplier Ditambah", Toast.LENGTH_SHORT).show();
+                            }else
+                            {
+                                Toast.makeText(getContext(), "Suplier gagal Ditambah", Toast.LENGTH_SHORT).show();
+                            }
                             ((PengPgwActivity) getActivity()).onFinishDialog();
                             dismiss();
                         }
 
                         @Override
                         public void onFailure(Call<showPegawai> call, Throwable t) {
-                            Toast.makeText(getContext(), "Suplier gagal Ditambah", Toast.LENGTH_SHORT).show();
                             dismiss();
                         }
                     });

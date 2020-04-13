@@ -87,17 +87,16 @@ public class PengLynActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                filter(s.toString());
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                filter(s.toString());
             }
         });
         Button btnAddSupp = findViewById(R.id.createlyn_btn);
         btnAddSupp.setOnClickListener(this);
-
+        onFinishDialog();
     }
 
     @Override
@@ -126,8 +125,9 @@ public class PengLynActivity extends AppCompatActivity implements View.OnClickLi
         call.enqueue(new Callback<showLayanan>() {
             @Override
             public void onResponse(Call<showLayanan> call, Response<showLayanan> response) {
+                list = response.body().getResult();
                 mDataLayananAdapter.notifyDataSetChanged();
-                mDataLayananAdapter = new DataLayananAdapter(response.body().getResult(), PengLynActivity.this);
+                mDataLayananAdapter = new DataLayananAdapter(list, PengLynActivity.this);
                 rvLayanan.setAdapter(mDataLayananAdapter);
 
             }

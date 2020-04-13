@@ -90,7 +90,13 @@ public class editSupplierFragment extends DialogFragment {
                 call.enqueue(new Callback<showSupplier>() {
                     @Override
                     public void onResponse(Call<showSupplier> call, Response<showSupplier> response) {
-                        Toast.makeText(getContext(), "Supplier Dihapus", Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful())
+                        {
+                            Toast.makeText(getContext(), "Supplier Dihapus", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(getContext(), "Supplier gagal Dihapus", Toast.LENGTH_SHORT).show();
+                        }
                         ((PengSupActivity)getActivity()).onFinishDialog();
                         dismiss();
                     }
@@ -115,7 +121,13 @@ public class editSupplierFragment extends DialogFragment {
                 call.enqueue(new Callback<showSupplier>() {
                     @Override
                     public void onResponse(Call<showSupplier> call, Response<showSupplier> response) {
-                        Toast.makeText(getContext(), "Supplier Diperbaharui", Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful()){
+                            Toast.makeText(getContext(), "Supplier Diperbaharui", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(getContext(), "Supplier gagal Diperbaharui", Toast.LENGTH_SHORT).show();
+                        }
                         dismiss();
                     }
 

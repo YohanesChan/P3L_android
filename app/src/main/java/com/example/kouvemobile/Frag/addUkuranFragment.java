@@ -55,14 +55,20 @@ public class addUkuranFragment  extends DialogFragment {
                     call.enqueue(new Callback<showUkuran>() {
                         @Override
                         public void onResponse(Call<showUkuran> call, Response<showUkuran> response) {
-                            Toast.makeText(getContext(), "Ukuran Ditambah", Toast.LENGTH_SHORT).show();
+                            if(response.isSuccessful())
+                            {
+                                Toast.makeText(getContext(), "Ukuran Ditambah", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                Toast.makeText(getContext(), "Ukuran gagal Ditambah", Toast.LENGTH_SHORT).show();
+                            }
                             ((PengUkActivity) getActivity()).onFinishDialog();
                             dismiss();
                         }
 
                         @Override
                         public void onFailure(Call<showUkuran> call, Throwable t) {
-                            Toast.makeText(getContext(), "Ukuran gagal Ditambah", Toast.LENGTH_SHORT).show();
                             dismiss();
                         }
                     });

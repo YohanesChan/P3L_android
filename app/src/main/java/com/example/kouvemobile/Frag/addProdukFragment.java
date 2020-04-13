@@ -65,14 +65,20 @@ public class addProdukFragment extends DialogFragment {
                     call.enqueue(new Callback<showProduk>() {
                         @Override
                         public void onResponse(Call<showProduk> call, Response<showProduk> response) {
-                            Toast.makeText(getContext(), "Produk Ditambah", Toast.LENGTH_SHORT).show();
+                            if (response.isSuccessful())
+                            {
+                                Toast.makeText(getContext(), "Produk Ditambah", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                Toast.makeText(getContext(), "Produk gagal Ditambah", Toast.LENGTH_SHORT).show();
+                            }
                             ((PengPdkActivity) getActivity()).onFinishDialog();
                             dismiss();
                         }
 
                         @Override
                         public void onFailure(Call<showProduk> call, Throwable t) {
-                            Toast.makeText(getContext(), "Produk gagal Ditambah", Toast.LENGTH_SHORT).show();
                             dismiss();
                         }
                     });

@@ -92,7 +92,7 @@ public class PengPdkActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                filter(s.toString());
             }
 
             @Override
@@ -102,7 +102,7 @@ public class PengPdkActivity extends AppCompatActivity implements View.OnClickLi
         });
         Button btnAddSupp = findViewById(R.id.createpdk_btn);
         btnAddSupp.setOnClickListener(this);
-        
+        onFinishDialog();
     }
 
     @Override

@@ -87,17 +87,19 @@ public class PengSupActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                onFinishDialog();
+                filter(s.toString());
 
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                filter(s.toString());
+
             }
         });
         Button btnAddSupp = findViewById(R.id.createsup_btn);
         btnAddSupp.setOnClickListener(this);
-
+        onFinishDialog();
     }
 
     @Override
@@ -126,14 +128,13 @@ public class PengSupActivity extends AppCompatActivity implements View.OnClickLi
         call.enqueue(new Callback<showSupplier>() {
             @Override
             public void onResponse(Call<showSupplier> call, Response<showSupplier> response) {
-//                list.addAll(DataPegawai.getListData());
-//                list.clear();
-//                list.addAll(response.body().getResult());
+                list = response.body().getResult();
                 mDataSupplierAdapter.notifyDataSetChanged();
-                mDataSupplierAdapter = new DataSupplierAdapter(response.body().getResult(), PengSupActivity.this);
+                mDataSupplierAdapter = new DataSupplierAdapter(list, PengSupActivity.this);
                 rvSupplier.setAdapter(mDataSupplierAdapter);
 
                 Log.e("data pegawai onfinish", response.body().getResult().toString());
+
             }
 
             @Override
@@ -143,5 +144,6 @@ public class PengSupActivity extends AppCompatActivity implements View.OnClickLi
         });
 //        mDataPegawaiAdapter.notifyDataSetChanged();
     }
+
 
 }

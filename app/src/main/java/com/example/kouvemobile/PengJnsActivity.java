@@ -90,17 +90,17 @@ public class PengJnsActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                filter(s.toString());
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                filter(s.toString());
+
             }
         });
         Button btnAddJns = findViewById(R.id.createjns_btn);
         btnAddJns.setOnClickListener(this);
-
+        onFinishDialog();
     }
 
     @Override
@@ -129,11 +129,9 @@ public class PengJnsActivity extends AppCompatActivity implements View.OnClickLi
         call.enqueue(new Callback<showJenis>() {
             @Override
             public void onResponse(Call<showJenis> call, Response<showJenis> response) {
-//                list.addAll(DataPegawai.getListData());
-//                list.clear();
-//                list.addAll(response.body().getResult());
+                list=response.body().getResult();
                 mDataJenisAdapter.notifyDataSetChanged();
-                mDataJenisAdapter = new DataJenisAdapter(response.body().getResult(), PengJnsActivity.this);
+                mDataJenisAdapter = new DataJenisAdapter(list, PengJnsActivity.this);
                 rvJenis.setAdapter(mDataJenisAdapter);
 
                 Log.e("data pegawai onfinish", response.body().getResult().toString());

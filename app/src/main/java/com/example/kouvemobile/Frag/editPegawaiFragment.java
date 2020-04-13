@@ -98,7 +98,12 @@ public class editPegawaiFragment extends DialogFragment {
                 call.enqueue(new Callback<showPegawai>() {
                     @Override
                     public void onResponse(Call<showPegawai> call, Response<showPegawai> response) {
-                        Toast.makeText(getContext(), "Pegawai Dihapus", Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful())
+                        {
+                            Toast.makeText(getContext(), "Pegawai Dihapus", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(getContext(), "Pegawai gagal Dihapus", Toast.LENGTH_SHORT).show();
+                        }
                         ((PengPgwActivity)getActivity()).onFinishDialog();
                         dismiss();
                     }
@@ -120,7 +125,13 @@ public class editPegawaiFragment extends DialogFragment {
                 call.enqueue(new Callback<showPegawai>() {
                     @Override
                     public void onResponse(Call<showPegawai> call, Response<showPegawai> response) {
-                        Toast.makeText(getContext(), "Pegawai Diperbaharui", Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful())
+                        {
+                            Toast.makeText(getContext(), "Pegawai Diperbaharui", Toast.LENGTH_SHORT).show();
+                        }else
+                        {
+                            Toast.makeText(getContext(), "Pegawai gagal Diperbaharui", Toast.LENGTH_SHORT).show();
+                        }
                         dismiss();
                     }
 

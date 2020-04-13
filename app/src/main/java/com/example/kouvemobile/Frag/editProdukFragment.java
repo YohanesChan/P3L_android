@@ -95,7 +95,14 @@ public class editProdukFragment extends DialogFragment {
                 call.enqueue(new Callback<showProduk>() {
                     @Override
                     public void onResponse(Call<showProduk> call, Response<showProduk> response) {
-                        Toast.makeText(getContext(), "Produk Dihapus", Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful())
+                        {
+                            Toast.makeText(getContext(), "Produk Dihapus", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(getContext(), "Produk gagal Dihapus", Toast.LENGTH_SHORT).show();
+                        }
                         ((PengPdkActivity)getActivity()).onFinishDialog();
                         dismiss();
 
@@ -123,7 +130,12 @@ public class editProdukFragment extends DialogFragment {
                 call.enqueue(new Callback<showProduk>() {
                     @Override
                     public void onResponse(Call<showProduk> call, Response<showProduk> response) {
-                        Toast.makeText(getContext(), "Produk Diperbaharui", Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful())
+                        {
+                            Toast.makeText(getContext(), "Produk Diperbaharui", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(getContext(), "Produk gagal Diperbaharui", Toast.LENGTH_SHORT).show();
+                        }
                         dismiss();
                     }
 

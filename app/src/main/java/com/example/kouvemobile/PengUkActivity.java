@@ -90,17 +90,16 @@ public class PengUkActivity extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                filter(s.toString());
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                filter(s.toString());
             }
         });
         Button btnAddUk = findViewById(R.id.createuk_btn);
         btnAddUk.setOnClickListener(this);
-
+        onFinishDialog();
     }
 
     @Override
@@ -129,11 +128,9 @@ public class PengUkActivity extends AppCompatActivity implements View.OnClickLis
         call.enqueue(new Callback<showUkuran>() {
             @Override
             public void onResponse(Call<showUkuran> call, Response<showUkuran> response) {
-//                list.addAll(DataPegawai.getListData());
-//                list.clear();
-//                list.addAll(response.body().getResult());
+                list = response.body().getResult();
                 mDataUkuranAdapter.notifyDataSetChanged();
-                mDataUkuranAdapter = new DataUkuranAdapter(response.body().getResult(), PengUkActivity.this);
+                mDataUkuranAdapter = new DataUkuranAdapter(list, PengUkActivity.this);
                 rvUkuran.setAdapter(mDataUkuranAdapter);
 
                 Log.e("data pegawai onfinish", response.body().getResult().toString());

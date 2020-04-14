@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.kouvemobile.API.ApiClient;
 import com.example.kouvemobile.API.ApiInterface;
+import com.example.kouvemobile.CsActivity;
 import com.example.kouvemobile.MainActivity;
 import com.example.kouvemobile.Model.Pegawai;
 import com.example.kouvemobile.Model.Supplier;
@@ -97,6 +98,14 @@ public class LoginFragment extends Fragment {
                                     progressDialog.dismiss();
                                     //intent to another activity
                                     Intent i = new Intent(getActivity(), OwnerActivity.class);
+                                    startActivity(i);
+                                    getActivity().finish();
+                                }else if (response.body().getResult().getRole_pegawai().equals("Customer Service")) {
+                                    Log.e("Login Berhasil", login_cred);
+                                    Toast.makeText(getContext(), "Login Berhasil", Toast.LENGTH_SHORT).show();
+                                    progressDialog.dismiss();
+                                    //intent to another activity
+                                    Intent i = new Intent(getActivity(), CsActivity.class);
                                     startActivity(i);
                                     getActivity().finish();
                                 }else {

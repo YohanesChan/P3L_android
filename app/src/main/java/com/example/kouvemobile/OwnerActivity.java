@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class OwnerActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView nama, id;
+    TextView nama;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,6 @@ public class OwnerActivity extends AppCompatActivity implements View.OnClickList
         SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
 
         String mnama = sp.getString("name","");
-        Integer mid = sp.getInt("id",0);
         nama = findViewById(R.id.nama);
         nama.setText(mnama);
     }

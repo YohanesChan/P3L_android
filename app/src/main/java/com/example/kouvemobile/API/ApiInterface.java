@@ -2,6 +2,7 @@ package com.example.kouvemobile.API;
 
 import com.example.kouvemobile.Model.Pegawai;
 import com.example.kouvemobile.Response.loginPegawai;
+import com.example.kouvemobile.Response.showCustomer;
 import com.example.kouvemobile.Response.showJenis;
 import com.example.kouvemobile.Response.showLayanan;
 import com.example.kouvemobile.Response.showPegawai;
@@ -230,5 +231,40 @@ public interface ApiInterface {
 
     @GET("produk")
     Call<tampilProduk> produkShow();
+
+    @FormUrlEncoded
+    @POST("customer/create")
+    Call<showCustomer> regisCustomer (
+            @Field("nama_customer") String nama_customer,
+            @Field("alamat_customer") String alamat_customer,
+            @Field("birthday_customer") String birthday_customer,
+            @Field("telp_customer") String telp_customer,
+            @Field("created_by") String created_by,
+            @Field("updated_by") String updated_by,
+            @Field("id_pegawai_fk") Integer id_pegawai_fk
+    );
+
+    @GET("customer")
+    Call<showCustomer> tampilCustomer();
+
+    @FormUrlEncoded
+    @POST("customer/delete/{id_customer}")
+    Call<showCustomer> hapusCustomer(
+            @Path("id_customer") int id_customer,
+            @Field("created_by") String created_by,
+            @Field("updated_by") String updated_by,
+            @Field("deleted_by") String deleted_by
+    );
+
+    @FormUrlEncoded
+    @POST("customer/update/{id_customer}")
+    Call<showCustomer> editCustomer(
+            @Path("id_customer") int id_Customer,
+            @Field("nama_customer") String nama_customer,
+            @Field("telp_customer") String telp_customer,
+            @Field("alamat_customer") String alamat_customer,
+            @Field("created_by") String created_by,
+            @Field("updated_by") String updated_by
+    );
 
 }

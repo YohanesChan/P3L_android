@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CsActivity"></activity>
+        <activity android:name=".PdkHabisActivity"></activity>
+        <activity android:name=".PengHewActivity" />
+        <activity android:name=".CsActivity" />
         <activity android:name=".PengCustActivity" />
         <activity android:name=".PengadaanActivity" />
         <activity android:name=".PengSupActivity" />

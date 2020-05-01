@@ -1,46 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/background"
     tools:context=".PengadaanActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/createpgd_btn"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_gravity="center"
-        android:paddingHorizontal="20dp"
-        android:text="Tambah Pengadaan"/>
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    <Button
-        android:id="@+id/readpgd_btn"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_gravity="center"
-        android:paddingHorizontal="20dp"
-        android:text="Tampil Pengadaan"/>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/updatepgd_btn"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_gravity="center"
-        android:paddingHorizontal="20dp"
-        android:text="Edit Pengadaan"/>
-
-    <Button
-        android:id="@+id/deletepgd_btn"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_gravity="center"
-        android:paddingHorizontal="20dp"
-        android:text="Hapus Pengadaan"/>
-
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

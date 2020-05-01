@@ -63,7 +63,7 @@ public class PengSupActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onResponse(Call<showSupplier> call, Response<showSupplier> response) {
 //                list.addAll(DataPegawai.getListData());
-                list.addAll(response.body().getResult());
+                list.addAll(0,response.body().getResult());
                 mDataSupplierAdapter.notifyDataSetChanged();
 
                 Log.e("data pegawai", response.body().getResult().toString());

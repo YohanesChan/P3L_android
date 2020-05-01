@@ -66,6 +66,7 @@ public class editLayananFragment extends DialogFragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    name_etxt.setEnabled(true);
                     harga_etxt.setEnabled(true);
                 } else {
                     name_etxt.setEnabled(false);
@@ -110,7 +111,7 @@ public class editLayananFragment extends DialogFragment {
             public void onClick(View v) {
                 apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 //
-                Call<showLayanan> call = apiInterface.editLayanan(lyn.getId_layanan(),
+                Call<showLayanan> call = apiInterface.editLayanan(lyn.getId_layanan(),name_etxt.getText().toString(),
                         Integer.parseInt(harga_etxt.getText().toString()), mnama,mnama);
 
 

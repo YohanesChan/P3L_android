@@ -3,9 +3,12 @@ package com.example.kouvemobile.API;
 import com.example.kouvemobile.Model.Pegawai;
 import com.example.kouvemobile.Response.loginPegawai;
 import com.example.kouvemobile.Response.showCustomer;
+import com.example.kouvemobile.Response.showDP;
+import com.example.kouvemobile.Response.showHewan;
 import com.example.kouvemobile.Response.showJenis;
 import com.example.kouvemobile.Response.showLayanan;
 import com.example.kouvemobile.Response.showPegawai;
+import com.example.kouvemobile.Response.showPengadaan;
 import com.example.kouvemobile.Response.showProduk;
 import com.example.kouvemobile.Response.showSupplier;
 import com.example.kouvemobile.Response.showUkuran;
@@ -101,6 +104,9 @@ public interface ApiInterface {
     @GET("produk")
     Call<showProduk> tampilProduk();
 
+    @GET("produk/notif")
+    Call<showProduk> tampilProdukHabis();
+
     @FormUrlEncoded
     @POST("produk/create")
     Call<showProduk> regisProduk (
@@ -159,6 +165,7 @@ public interface ApiInterface {
     @POST("layanan/update/{id_layanan}")
     Call<showLayanan> editLayanan(
             @Path("id_layanan") int id_layanan,
+            @Field("nama_layanan") String nama_layanan,
             @Field("harga_layanan") Integer harga_layanan,
             @Field("created_by") String created_by,
             @Field("updated_by") String updated_by
@@ -244,6 +251,39 @@ public interface ApiInterface {
             @Field("id_pegawai_fk") Integer id_pegawai_fk
     );
 
+    @GET("hewan")
+    Call<showHewan> tampilHewan();
+
+    @FormUrlEncoded
+    @POST("hewan/delete/{id_hewan}")
+    Call<showHewan> hapusHewan(
+            @Path("id_hewan") int id_customer,
+            @Field("created_by") String created_by,
+            @Field("updated_by") String updated_by,
+            @Field("deleted_by") String deleted_by
+    );
+
+    @FormUrlEncoded
+    @POST("hewan/update/{id_hewan}")
+    Call<showHewan> editHewan(
+            @Path("id_hewan") int id_hewan,
+            @Field("nama_hewan") String nama_hewan,
+            @Field("created_by") String created_by,
+            @Field("updated_by") String updated_by
+    );
+
+    @FormUrlEncoded
+    @POST("hewan/create")
+    Call<showHewan> regisHewan (
+            @Field("nama_hewan") String nama_hewan,
+            @Field("birthday_hewan") String birthday_hewan,
+            @Field("id_customer_fk") Integer id_customer_fk,
+            @Field("id_pegawai_fk") Integer id_pegawai_fk,
+            @Field("id_jenis_fk") Integer id_jenis_fk,
+            @Field("created_by") String created_by,
+            @Field("updated_by") String updated_by
+    );
+
     @GET("customer")
     Call<showCustomer> tampilCustomer();
 
@@ -267,4 +307,75 @@ public interface ApiInterface {
             @Field("updated_by") String updated_by
     );
 
+    @FormUrlEncoded
+    @POST("pengadaan/create")
+    Call<showPengadaan> regisPengadaan (
+            @Field("id_supplier_fk") Integer id_supplier_fk,
+            @Field("status_PO") String status_PO,
+            @Field("total_pengadaan") Integer total_pengadaan,
+            @Field("id_pegawai_fk") Integer id_pegawai_fk,
+            @Field("created_by") String created_by,
+            @Field("updated_by") String updated_by
+    );
+
+    @GET("pengadaan")
+    Call<showPengadaan> tampilPengadaan();
+
+    @FormUrlEncoded
+    @POST("pengadaan/delete/{id_pengadaan}")
+    Call<showPengadaan> hapusPengadaan(
+            @Path("id_pengadaan") int id_pengadaan,
+            @Field("created_by") String created_by,
+            @Field("updated_by") String updated_by,
+            @Field("deleted_by") String deleted_by
+    );
+
+    @FormUrlEncoded
+    @POST("pengadaan/udt/{id_pengadaan}")
+    Call<showPengadaan> editPengadaan(
+            @Path("id_pengadaan") int id_pengadaan,
+            @Field("created_by") String created_by,
+            @Field("updated_by") String updated_by
+    );
+
+    @FormUrlEncoded
+    @POST("pengadaan/ttl/{id_pengadaan_fk}")
+    Call<showPengadaan> totalPengadaan(
+            @Path("id_pengadaan_fk") int id_pengadaan_fk,
+            @Field("created_by") String created_by,
+            @Field("updated_by") String updated_by
+    );
+
+    @GET("detilP/{id_pengadaan_fk}")
+    Call<showDP> tampilDPengadaan(
+        @Path("id_pengadaan_fk") int id_pengadaan_fk
+    );
+
+    @FormUrlEncoded
+    @POST("detilP/create")
+    Call<showDP> regisDPengadaan (
+            @Field("nama_produk") String nama_produk,
+            @Field("jml_produk") Integer jml_produk,
+            @Field("harga_produk") Integer harga_produk,
+            @Field("id_pengadaan_fk") Integer id_pengadaan_fk,
+            @Field("id_produk_fk") Integer id_produk_fk,
+            @Field("created_by") String created_by,
+            @Field("updated_by") String updated_by
+    );
+
+
+    @POST("detilP/delete/{id_detil_pengadaan}")
+    Call<showDP> hapusDPengadaan(
+            @Path("id_detil_pengadaan") int id_detil_pengadaan
+    );
+
+    @FormUrlEncoded
+    @POST("detilP/update/{id_detil_pengadaan}")
+    Call<showDP> editDPengadaan(
+            @Path("id_detil_pengadaan") int id_detil_pengadaan,
+            @Field("jml_produk") Integer jml_produk,
+            @Field("harga_produk") Integer harga_produk,
+            @Field("created_by") String created_by,
+            @Field("updated_by") String updated_by
+    );
 }

@@ -37,6 +37,9 @@ public class OwnerActivity extends AppCompatActivity implements View.OnClickList
         Button btnPengadaan = findViewById(R.id.pengadaan_btn);
         btnPengadaan.setOnClickListener(this);
 
+        Button btnNotifikasi = findViewById(R.id.notif_btn);
+        btnNotifikasi.setOnClickListener(this);
+
         Button btnLogout = findViewById(R.id.logout_btn);
         btnLogout.setOnClickListener(this);
         SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
@@ -76,6 +79,11 @@ public class OwnerActivity extends AppCompatActivity implements View.OnClickList
             case R.id.pengadaan_btn:
                 Intent pengadaan = new Intent(OwnerActivity.this, PengadaanActivity.class);
                 startActivity(pengadaan);
+                break;
+
+            case R.id.notif_btn:
+                Intent notifikasi = new Intent(OwnerActivity.this, PdkHabisActivity.class);
+                startActivity(notifikasi);
                 break;
 
             case R.id.logout_btn:

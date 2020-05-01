@@ -8,8 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
 //    private static final String URL = "http://www..org/api/";
-    private static final String URL = "http://192.168.1.9:8000/api/";
-    public static final String URL_IMAGE = "http://192.168.1.9:8000/storage/";
+    private static final String URL = "http://192.168.0.101:8000/api/";
+    public static final String URL_IMAGE = "http://192.0.101.42:8000/storage/";
 
     private static Retrofit retrofit;
 

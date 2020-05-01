@@ -45,7 +45,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="60dp">
         <Button
-            android:id="@+id/kelolacst_btn"
+            android:id="@+id/kCst_btn"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -55,13 +55,13 @@
             android:textColor="#fff"
             android:background="@drawable/button"/>
         <Button
-            android:id="@+id/Order"
+            android:id="@+id/kHwn_btn"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_gravity="center"
             android:paddingHorizontal="50dp"
-            android:text="Order"
+            android:text="Hewan"
             android:textColor="#fff"
             android:background="@drawable/button"/>
     </LinearLayout>

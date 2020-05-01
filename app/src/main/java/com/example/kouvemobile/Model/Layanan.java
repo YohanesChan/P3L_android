@@ -9,8 +9,6 @@ public class Layanan {
     @SerializedName("no_layanan")
     private String no_layanan;
 
-
-
     @SerializedName("nama_layanan")
     private String nama_layanan;
 

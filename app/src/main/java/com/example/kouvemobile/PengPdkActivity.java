@@ -60,7 +60,6 @@ public class PengPdkActivity extends AppCompatActivity implements View.OnClickLi
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
         final ProgressDialog progressDialog = new ProgressDialog(PengPdkActivity.this);
-        progressDialog.setMessage("Tunggu jing ngak sabar amat");
         progressDialog.show();
 
         Call<showProduk> call = apiInterface.tampilProduk();
@@ -125,15 +124,10 @@ public class PengPdkActivity extends AppCompatActivity implements View.OnClickLi
 
     public void onFinishDialog() {
 
-//        Toast.makeText(this, "test on finish", Toast.LENGTH_SHORT).show();
-
         Call<showProduk> call = apiInterface.tampilProduk();
         call.enqueue(new Callback<showProduk>() {
             @Override
             public void onResponse(Call<showProduk> call, Response<showProduk> response) {
-//                list.addAll(DataPegawai.getListData());
-//                list.clear();
-//                list.addAll(response.body().getResult());
                 mDataProdukAdapter.notifyDataSetChanged();
                 mDataProdukAdapter = new DataProdukAdapter(response.body().getResult(), PengPdkActivity.this);
                 rvProduk.setAdapter(mDataProdukAdapter);

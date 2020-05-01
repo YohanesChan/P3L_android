@@ -34,12 +34,10 @@ import retrofit2.Response;
 import static android.content.Context.MODE_PRIVATE;
 
 public class LoginFragment extends Fragment {
-    Pegawai pgw;
     EditText username_txt, password_txt;
     Button login_btn;
     String login_cred;
     String login_role;
-    String role;
     private ApiInterface apiInterface;
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

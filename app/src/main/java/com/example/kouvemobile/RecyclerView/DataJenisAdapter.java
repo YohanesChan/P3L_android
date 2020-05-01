@@ -116,7 +116,6 @@ public class DataJenisAdapter extends RecyclerView.Adapter<DataJenisAdapter.Card
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNama = itemView.findViewById(R.id.nama_jenis);
-            tvId = itemView.findViewById(R.id.id_layanan);
             cardview_btn = itemView.findViewById(R.id.cardview_btn);
         }
 

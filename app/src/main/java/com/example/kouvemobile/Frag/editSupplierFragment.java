@@ -70,6 +70,7 @@ public class editSupplierFragment extends DialogFragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    name_etxt.setEnabled(true);
                     telp_etxt.setEnabled(true);
                     alamat_etxt.setEnabled(true);
                 } else {

@@ -70,6 +70,7 @@ public class addSupplierFragment extends DialogFragment {
                             if(response.isSuccessful())
                             {
                                 Toast.makeText(getContext(), "Suplier Ditambah", Toast.LENGTH_SHORT).show();
+
                             }
                             else
                             {

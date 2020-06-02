@@ -112,7 +112,7 @@ public class addPegawaiFragment extends DialogFragment {
 
                     Call<showPegawai> call = apiInterface.regisPegawai(name_etxt.getText().toString(),
                             mSpinner.getSelectedItem().toString(), alamat_etxt.getText().toString(), mBday.getText().toString(),
-                            telp_etxt.getText().toString(), username_etxt.getText().toString(), password_etxt.getText().toString(), mnama, mnama);
+                            telp_etxt.getText().toString(), username_etxt.getText().toString(), password_etxt.getText().toString(), mnama);
                     call.enqueue(new Callback<showPegawai>() {
                         @Override
                         public void onResponse(Call<showPegawai> call, Response<showPegawai> response) {

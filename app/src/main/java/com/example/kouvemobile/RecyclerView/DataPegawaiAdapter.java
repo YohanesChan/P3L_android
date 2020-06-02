@@ -74,7 +74,7 @@ public class DataPegawaiAdapter extends RecyclerView.Adapter<DataPegawaiAdapter.
         holder.tvStatus.setText(pgw.getRole_pegawai());
         holder.tvTelp.setText(pgw.getTelp_pegawai());
         holder.tvId.setText(pgw.getNo_pegawai());
-        holder.cardview_btn.setOnClickListener(new View.OnClickListener() {
+        holder.cardview_btn.setOnClickListener(      new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editPegawaiFragment dialogEdit = new editPegawaiFragment();

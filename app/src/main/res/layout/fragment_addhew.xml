@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Tambah Hewan"
+        android:textSize="30sp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/title"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/nama_hew_etxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:singleLine="true"
+            android:padding="10dp"
+            android:hint="Nama"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bday_hew_btn"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="5dp"
+            android:text="Birth Date"
+            android:background="@drawable/button1"
+            android:textColor="@color/object1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="18dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/object1"
+            android:id="@+id/bday_hew_txt"/>
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/cst_spn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:hint="Customer"/>
+
+    <Spinner
+        android:id="@+id/jen_spn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:hint="Jenis"/>
+    <Button
+        android:id="@+id/addhew_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:paddingHorizontal="50dp"
+        android:text="ADD"
+        android:textColor="#fff"
+        android:background="@drawable/button"/>
+</LinearLayout>

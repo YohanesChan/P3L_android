@@ -6,7 +6,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -35,6 +38,7 @@ public class ProdukFragment extends Fragment {
     private List<ProdukShow> mlistProduk;
     private ApiInterface apiInterface;
     private ShowProdukAdapter mShowProdukAdapter;
+    Spinner mSpinner;
     private Produk pdk;
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,29 +59,160 @@ public class ProdukFragment extends Fragment {
         mShowProdukAdapter = new ShowProdukAdapter(list,getContext());
         rvProduk.setAdapter(mShowProdukAdapter);
 
-        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+//        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+//
+//        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+//        progressDialog.setMessage("Loading");
+//        progressDialog.show();
+//
+//        Call<tampilProduk> call = apiInterface.produkShow();
+//        call.enqueue(new Callback<tampilProduk>() {
+//            @Override
+//            public void onResponse(Call<tampilProduk> call, Response<tampilProduk> response) {
+//
+//                list.addAll(response.body().getResult());
+//                mShowProdukAdapter.notifyDataSetChanged();
+//
+//                progressDialog.dismiss();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<tampilProduk> call, Throwable t) {
+//
+//                progressDialog.dismiss();
+//            }
+//        });
 
-        final ProgressDialog progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("Loading");
-        progressDialog.show();
-
-        Call<tampilProduk> call = apiInterface.produkShow();
-        call.enqueue(new Callback<tampilProduk>() {
+        mSpinner = (Spinner) v.findViewById(R.id.sort_spn);
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onResponse(Call<tampilProduk> call, Response<tampilProduk> response) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 0)
+                {
+                    list.clear();
+                    mShowProdukAdapter.notifyDataSetChanged();
+                    apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
-                list.addAll(response.body().getResult());
-                mShowProdukAdapter.notifyDataSetChanged();
+                    final ProgressDialog progressDialog = new ProgressDialog(getContext());
+                    progressDialog.setMessage("Loading");
+                    progressDialog.show();
 
-                progressDialog.dismiss();
+                    Call<tampilProduk> call = apiInterface.produkShowPD();
+                    call.enqueue(new Callback<tampilProduk>() {
+                        @Override
+                        public void onResponse(Call<tampilProduk> call, Response<tampilProduk> response) {
+
+                            list.addAll(response.body().getResult());
+                            mShowProdukAdapter.notifyDataSetChanged();
+
+                            progressDialog.dismiss();
+                        }
+
+                        @Override
+                        public void onFailure(Call<tampilProduk> call, Throwable t) {
+
+                            progressDialog.dismiss();
+                        }
+                    });
+
+                }else if(position == 1){
+                    list.clear();
+                    mShowProdukAdapter.notifyDataSetChanged();
+                    apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+
+                    final ProgressDialog progressDialog = new ProgressDialog(getContext());
+                    progressDialog.setMessage("Loading");
+                    progressDialog.show();
+
+                    Call<tampilProduk> call = apiInterface.produkShowPA();
+                    call.enqueue(new Callback<tampilProduk>() {
+                        @Override
+                        public void onResponse(Call<tampilProduk> call, Response<tampilProduk> response) {
+
+                            list.addAll(response.body().getResult());
+                            mShowProdukAdapter.notifyDataSetChanged();
+
+                            progressDialog.dismiss();
+                        }
+
+                        @Override
+                        public void onFailure(Call<tampilProduk> call, Throwable t) {
+
+                            progressDialog.dismiss();
+                        }
+                    });
+
+                }else if(position == 2){
+                    list.clear();
+                    apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+
+                    final ProgressDialog progressDialog = new ProgressDialog(getContext());
+                    progressDialog.setMessage("Loading");
+                    progressDialog.show();
+
+                    Call<tampilProduk> call = apiInterface.produkShowSD();
+                    call.enqueue(new Callback<tampilProduk>() {
+                        @Override
+                        public void onResponse(Call<tampilProduk> call, Response<tampilProduk> response) {
+
+                            list.addAll(response.body().getResult());
+                            mShowProdukAdapter.notifyDataSetChanged();
+
+                            progressDialog.dismiss();
+                        }
+
+                        @Override
+                        public void onFailure(Call<tampilProduk> call, Throwable t) {
+
+                            progressDialog.dismiss();
+                        }
+                    });
+                }else if(position == 3){
+                    list.clear();
+                    apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+
+                    final ProgressDialog progressDialog = new ProgressDialog(getContext());
+                    progressDialog.setMessage("Loading");
+                    progressDialog.show();
+
+                    Call<tampilProduk> call = apiInterface.produkShowSA();
+                    call.enqueue(new Callback<tampilProduk>() {
+                        @Override
+                        public void onResponse(Call<tampilProduk> call, Response<tampilProduk> response) {
+
+                            list.addAll(response.body().getResult());
+                            mShowProdukAdapter.notifyDataSetChanged();
+
+                            progressDialog.dismiss();
+                        }
+
+                        @Override
+                        public void onFailure(Call<tampilProduk> call, Throwable t) {
+
+                            progressDialog.dismiss();
+                        }
+                    });
+                    mShowProdukAdapter.notifyDataSetChanged();
+                }else{
+
+                }
             }
 
             @Override
-            public void onFailure(Call<tampilProduk> call, Throwable t) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
-                progressDialog.dismiss();
             }
         });
+        ArrayAdapter<CharSequence> adapter =
+                ArrayAdapter.createFromResource(getContext(),
+                        R.array.sort,
+                        android.R.layout.simple_spinner_item);
+
+        //how the spinner will look when it drop downs on click
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //setting adapter to spinner
+        mSpinner.setAdapter(adapter);
 
         return v;
     }

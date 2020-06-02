@@ -29,59 +29,83 @@
         android:paddingTop="20dp"
         />
     </LinearLayout>
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:background="@drawable/logo"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <TextView
-        android:layout_width="310dp"
-        android:layout_height="180dp"
-        android:text="   Kouvee Shop merupakan
-        \n   Pet Shop No.1 di Indonesia
-        \n   dengan berbagai produk
+        android:layout_width="200dp"
+        android:layout_height="350dp"
+        android:text="   Kouvee Shop
+        \n   merupakan Pet Shop
+        \n   No.1 di Indonesia
+        \n   dengan berbagai
+        \n   macam produk terbaik
         \n   dan layanan yang akan
-        \n   memanjakan hewan peliharaan
-        \n   anda (/^3^)/"
-        android:textSize="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
+        \n   memanjakan hewan
+        \n   peliharaan anda
+        \n   (/^3^)/  (/^3^)/  (/^3^)/
+        \n    \\(^3^\\) \\(^3^\\) \\(^3^\\)
+        \n     \\(^3^)/ \\(^3^)/ \\(^3^)/"
+        android:textSize="18dp"
         android:paddingTop="10dp"
-        android:background="@drawable/rounded_square"/>
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/h1"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="170dp"
+        android:layout_height="195dp"
+        android:text="   Nikmati berbagai
+        \n   diskon produk dan
+        \n   jasa layanan kami
+        \n   hingga 70%! \\(*0*)/
+        \n   daftar segera
+        \n   menjadi member!
+        \n   dan nikmati promo
+        \n   menarik lainnya"
+
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp"
+        android:paddingTop="10dp"
+        android:background="@drawable/h2"/>
+
+        <TextView
+            android:layout_width="170dp"
+            android:layout_height="150dp"
+            android:text="   Kamu lagi mager?
+        \n   kami siap mengirim
+        \n   barang anda (^.^)b
+        \n   (0274)357735 atau
+        \n   kunjungi situs kami
+        \n   sayanghewan.com"
+            android:textSize="16dp"
+            android:paddingTop="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/h3"/>
+    </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
-        android:layout_width="310dp"
-        android:layout_height="100dp"
-        android:text="   Nikmati berbagai diskon
-        \n   produk dan jasa layanan kami
-        \n   hingga 70%! \\(*0*)/"
-        android:textSize="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:paddingTop="10dp"
-        android:background="@drawable/rounded_square"/>
-
-    <TextView
-        android:layout_width="310dp"
-        android:layout_height="170dp"
-        android:text="   Kamu lagi mager? kami siap
-        \n   mengirim barang anda (^.^)b
-        \n   Cukup Hubungi (0274)357735
-        \n   Selengkapnya  dapat kunjungi
-        \n   situs kami di
-        \n   www.sayanghewan.com"
-        android:textSize="20dp"
-        android:paddingTop="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/rounded_square"/>
-
-    <TextView
-        android:layout_width="310dp"
+        android:layout_width="380dp"
         android:layout_height="100dp"
         android:text="   Temukan Kami di
         \n   Jl.Moses Gatotkaca No.22
         \n   Yogyakarta 55281"
         android:textSize="20dp"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:paddingTop="10dp"
-        android:background="@drawable/rounded_square"/>
+        android:background="@drawable/h4"/>
 
 
 </LinearLayout>

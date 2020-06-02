@@ -51,7 +51,7 @@ public class addUkuranFragment  extends DialogFragment {
                 else {
                     apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
-                    Call<showUkuran> call = apiInterface.regisUkuran(name_etxt.getText().toString(), mnama, mnama, mid);
+                    Call<showUkuran> call = apiInterface.regisUkuran(name_etxt.getText().toString(), mnama, mid);
                     call.enqueue(new Callback<showUkuran>() {
                         @Override
                         public void onResponse(Call<showUkuran> call, Response<showUkuran> response) {

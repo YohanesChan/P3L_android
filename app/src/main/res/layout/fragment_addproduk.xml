@@ -73,6 +73,28 @@
             android:hint="Stok Minimum"/>
 
     </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/chooseImg_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:paddingHorizontal="15dp"
+            android:text="select Image"
+            android:textColor="#fff"
+            android:background="@drawable/button"
+            />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/ic_image_black_24dp"
+            android:id="@+id/img_view"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/addpdk_btn"

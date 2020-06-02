@@ -63,7 +63,7 @@ public class addSupplierFragment extends DialogFragment {
                     apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
                     Call<showSupplier> call = apiInterface.regisSupplier(name_etxt.getText().toString(),
-                            telp_etxt.getText().toString(), alamat_etxt.getText().toString(), mid, mnama, mnama);
+                            telp_etxt.getText().toString(), alamat_etxt.getText().toString(), mid, mnama);
                     call.enqueue(new Callback<showSupplier>() {
                         @Override
                         public void onResponse(Call<showSupplier> call, Response<showSupplier> response) {

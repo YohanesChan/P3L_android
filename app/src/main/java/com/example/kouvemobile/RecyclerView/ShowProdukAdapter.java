@@ -46,7 +46,7 @@ public class ShowProdukAdapter extends RecyclerView.Adapter<ShowProdukAdapter.Gr
         holder.tvHarga.setText(pdk.getHarga_produk().toString());
         holder.tvStok.setText(pdk.getStok_produk().toString());
         //holder.image.setImageResource(Integer.parseInt(String.valueOf(pdk.getGambar())));
-        Picasso.with(context).load(URL_IMAGE+pdk.getGambar()).resize(200,200)
+        Picasso.get().load(URL_IMAGE+pdk.getGambar()).resize(200,200)
                 .centerCrop().into(holder.image);
 
     }

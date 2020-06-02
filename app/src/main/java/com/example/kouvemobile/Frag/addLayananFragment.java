@@ -110,7 +110,7 @@ public class addLayananFragment extends DialogFragment {
 
                     Call<showLayanan> call = apiInterface.regisLayanan(name_etxt.getText().toString() + " - " + ukuranLy,
                             Integer.parseInt(harga_etxt.getText().toString()),
-                            selected, mnama, mnama, mid);
+                            selected, mnama, mid);
                     call.enqueue(new Callback<showLayanan>() {
                         @Override
                         public void onResponse(Call<showLayanan> call, Response<showLayanan> response) {

@@ -12,4 +12,17 @@
         <item>Customer Service</item>
         <item>Kasir</item>
     </string-array>
+
+    <string-array name="sort">
+        <item>Harga Tertinggi</item>
+        <item>Harga Terrendah</item>
+        <item>Stok Terbanyak</item>
+        <item>Stok Tersedikit</item>
+    </string-array>
+
+    <string-array name="filter">
+        <item>All</item>
+        <item>Proccess</item>
+        <item>Finished</item>
+    </string-array>
 </resources>

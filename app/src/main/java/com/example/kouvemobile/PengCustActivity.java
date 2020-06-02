@@ -70,7 +70,7 @@ public class PengCustActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 //-------------------------------------------------------------------------------------------------------sampe sini
-//        list.addAll(DataCustomer.getListData());
+        //list.addAll(DataCustomer.getListData());
         EditText search_etxt = findViewById(R.id.search_cst_etxt);
         search_etxt.addTextChangedListener(new TextWatcher() {
             @Override

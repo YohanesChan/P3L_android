@@ -1,23 +1,67 @@
 package com.example.kouvemobile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.kouvemobile.API.ApiClient;
+import com.example.kouvemobile.API.ApiInterface;
+import com.example.kouvemobile.Model.Produk;
+import com.example.kouvemobile.RecyclerView.DataProdukAdapter;
+import com.example.kouvemobile.Response.showProduk;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class OwnerActivity extends AppCompatActivity implements View.OnClickListener {
     TextView nama;
+    private ApiInterface apiInterface;
+    private DataProdukAdapter mDataProdukAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner);
+
+        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<showProduk> call = apiInterface.tampilProdukHabis();
+        call.enqueue(new Callback<showProduk>() {
+            @Override
+            public void onResponse(Call<showProduk> call, Response<showProduk> response) {
+                if(response.body().getResult()==null)
+                {
+
+                }else{
+                    createNotificationChannel();
+                    makeNotification();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<showProduk> call, Throwable t) {
+
+            }
+        });
 
         Button btnKelolaPgw = findViewById(R.id.kelolapgw_btn);
         btnKelolaPgw.setOnClickListener(this);
@@ -96,5 +140,40 @@ public class OwnerActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(new Intent(OwnerActivity.this, MainActivity.class));
                 break;
         }
+    }
+
+    public void makeNotification(){
+        Intent intent = new Intent(this, PdkHabisActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "notification")
+                .setSmallIcon(R.drawable.ic_notifications_black_24dp)
+                .setContentTitle("Stok Udah mepet Bro")
+                .setContentText("Ketuk untuk melihat barang yang hampir habis")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                // Set the intent that will fire when the user taps the notification
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+        NotificationManagerCompat notification = NotificationManagerCompat.from(this);
+        notification.notify(1,builder.build());
+    }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("notification", "Kouvee", NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription("Kouvee");
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(getApplicationContext(),OwnerActivity.class));
     }
 }

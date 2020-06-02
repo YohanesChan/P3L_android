@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Tambah Jenis Hewan"
-        android:textSize="30sp"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/title"/>
+        android:text="Tambah Jenis Hewan"
+        android:textColor="@color/title"
+        android:textSize="30sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

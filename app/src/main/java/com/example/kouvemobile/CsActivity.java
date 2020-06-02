@@ -18,10 +18,14 @@ public class CsActivity extends AppCompatActivity implements View.OnClickListene
 
         Button btnKelolaCst = findViewById(R.id.kCst_btn);
         Button btnKelolaHwn = findViewById(R.id.kHwn_btn);
+        Button btnTransaksiP = findViewById(R.id.penjualanpdk_btn);
+        Button btnTransaksiL = findViewById(R.id.penjualanlyn_btn);
         Button btnLogout = findViewById(R.id.logout_btn);
 
         btnKelolaCst.setOnClickListener(this);
         btnKelolaHwn.setOnClickListener(this);
+        btnTransaksiP.setOnClickListener(this);
+        btnTransaksiL.setOnClickListener(this);
         btnLogout.setOnClickListener(this);
 
         SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
@@ -44,6 +48,16 @@ public class CsActivity extends AppCompatActivity implements View.OnClickListene
                 startActivity(kelolahwn);
                 break;
 
+            case R.id.penjualanpdk_btn:
+                Intent transaksip = new Intent(CsActivity.this, TransaksiPActivity.class);
+                startActivity(transaksip);
+                break;
+
+            case R.id.penjualanlyn_btn:
+                Intent transaksil = new Intent(CsActivity.this, TransaksiLActivity.class);
+                startActivity(transaksil);
+                break;
+
             case R.id.logout_btn:
                 SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
                 SharedPreferences.Editor ed = sp.edit();
@@ -55,4 +69,10 @@ public class CsActivity extends AppCompatActivity implements View.OnClickListene
                 break;
         }
     }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(getApplicationContext(), CsActivity.class));
+    }
 }
+

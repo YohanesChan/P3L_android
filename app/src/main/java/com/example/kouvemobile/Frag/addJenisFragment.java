@@ -49,7 +49,7 @@ public class addJenisFragment extends DialogFragment {
                 else {
                     apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
-                    Call<showJenis> call = apiInterface.regisJenis(name_etxt.getText().toString(), mnama, mnama, mid);
+                    Call<showJenis> call = apiInterface.regisJenis(name_etxt.getText().toString(), mnama, mid);
                     call.enqueue(new Callback<showJenis>() {
                         @Override
                         public void onResponse(Call<showJenis> call, Response<showJenis> response) {

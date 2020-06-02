@@ -87,7 +87,7 @@ public class addCustomerFragment extends DialogFragment {
 
                     Call<showCustomer> call = apiInterface.regisCustomer(name_etxt.getText().toString(),
                             alamat_etxt.getText().toString(), mBday.getText().toString(),
-                            telp_etxt.getText().toString(), mnama, mnama, mid);
+                            telp_etxt.getText().toString(), mnama, mid);
                     call.enqueue(new Callback<showCustomer>() {
                         @Override
                         public void onResponse(Call<showCustomer> call, Response<showCustomer> response) {
